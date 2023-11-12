@@ -19,7 +19,6 @@
         ripgrep
         jq
         tree
-        exa
 	];
   
   programs.neovim = {
