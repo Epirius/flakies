@@ -39,6 +39,11 @@
     chromium
     gh
     vscode
+    jetbrains.idea-ultimate
+    obsidian
+    spotify
+    zellij
+    helix
   ];
 
   programs = {

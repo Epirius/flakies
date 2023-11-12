@@ -103,6 +103,7 @@
     wget
     git
     rustup
+    libsForQt5.spectacle
   ];
 
   fonts.packages = with pkgs; [
