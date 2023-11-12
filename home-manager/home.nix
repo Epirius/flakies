@@ -5,11 +5,25 @@
   home.homeDirectory = "/home/felix";
   home.stateVersion = "22.11";
   nixpkgs = {
-      config = {
+    config = {
       allowUnfree = true;
       allowUnfreePredicate = (_: true);
     };
   };
+  home.sessionVariables = {
+    EDITOR="nvim";
+  };
+  home.shellAliases = {
+    l = "eza";
+    ls = "eza";
+    cat = "bat";
+    home-switch = "home-manager switch --flake .#felix@nixos";
+    nixos-switch = "nixos rebuild switch --flake .#nixos";
+    c = "clear";
+    reload = "source ~/.zshrc";
+    cg = "cargo";
+  };
+  home.file = {};
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
@@ -23,6 +37,8 @@
     eza
     google-chrome
     chromium
+    gh
+    vscode
   ];
 
   programs = {
@@ -37,6 +53,15 @@
       profiles.default = {
         extensions = with inputs.firefox-addons.packages."x86_64-linux"; [
 	  ublock-origin 
+	  proton-pass
+	  sponsorblock
+	  videospeed
+	  reddit-enhancement-suite
+	  reddit-comment-collapser
+	  pushbullet
+	  #grammarly
+	  facebook-container
+	  #enhancer-for-youtube
 	];
 
 	bookmarks = [
@@ -95,6 +120,8 @@
 
     zsh = {
       enable = true;
+      enableAutosuggestions = true;
+      initExtra = "bindkey '^H' backward-kill-word";
     };
 
     zsh.oh-my-zsh= {
@@ -107,17 +134,27 @@
       enable = true;
       userName = "Felix Kaasa";
       userEmail = "mrKaasa@protonmail.com";
+      aliases = {
+        p = "push";
+	cm = "commit";
+      };
+    };
+
+    vscode = {
+      enable = true;
+      enableExtensionUpdateCheck = true;
+      extensions = with pkgs.vscode-extensions; [
+        # see: https://search.nixos.org/packages?channel=23.05&from=0&size=50&sort=relevance&type=packages&query=vscode-extensions
+        esbenp.prettier-vscode
+	dbaeumer.vscode-eslint
+	bradlc.vscode-tailwindcss
+	rust-lang.rust-analyzer
+	asvetliakov.vscode-neovim
+	tomoki1207.pdf
+      ];
     };
 
   };
 
-   home.sessionVariables = {
-    EDITOR="nvim";
-  };
-  home.shellAliases = {
-    l = "eza";
-    ls = "eza";
-    cat = "bat";
-  };
 
 }
