@@ -6,8 +6,16 @@
    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
    # Home manager
-   home-manager.url = "github:nix-community/home-manager";
-   home-manager.inputs.nixpkgs.follows = "nixpkgs";
+   home-manager = {
+     url = "github:nix-community/home-manager";
+     inputs.nixpkgs.follows = "nixpkgs";
+   };
+
+   # NUR firefox-addons
+   firefox-addons = {
+     url = "gitlab:rycee/nur-expressions/?dir=pkgs/firefox-addons";
+     inputs.nixpkgs.follows = "nixpkgs";
+   };
 
    # Hardware
    hardware.url = "github:nixos/nixos-hardware";
