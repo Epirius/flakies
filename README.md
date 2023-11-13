@@ -13,6 +13,7 @@ nix shell nixpkgs\#neofetch
 
 # installation instructions
 ## install via script
+NB: SCRIPT DOES NOT CURRENTLY WORK CORRECTLY
 start from a clean install of nixos.
 download and run full-install.sh (without cloning the repo)
 
@@ -30,6 +31,7 @@ sudo nixos-rebuild switch
 cd ~
 git clone https://github.com/Epirius/flakies.git
 ```
+NB: SCRIPT DOES NOT CURRENTLY WORK CORRECTLY
 You can run ./install.sh at this point, or continue manually
 ```
 cd flakies/nixos/
