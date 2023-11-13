@@ -19,6 +19,12 @@
 
    # Hardware
    hardware.url = "github:nixos/nixos-hardware";
+
+   # Xmonad modules
+   xmonad-contexts = {
+     url = "github:Procrat/xmonad-contexts";
+     flake = false;
+   };
  };
 
  outputs = { self, nixpkgs, home-manager, ... }@inputs: {

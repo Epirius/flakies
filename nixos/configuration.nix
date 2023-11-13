@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   imports =
@@ -65,7 +65,23 @@
     displayManager.sddm.enable = true;
     displayManager.defaultSession = "plasma";
     desktopManager.plasma5.enable = true;
-    windowManager.xmonad.enable = true; 
+    windowManager.xmonad = {
+      enable = true;
+      enableContribAndExtras = true;
+      enableConfiguredRecompile = true;
+
+      config = ./../home-manager/xmonad/xmonad.hs;
+      extraPackages =  haskellPackages: [
+	      haskellPackages.xmobar
+      ];
+
+      ghcArgs = [
+        "-hidir /tmp" # place interface files in /tmp, otherwise ghc tries to write them to the nix store
+        "-odir /tmp" # place object files in /tmp, otherwise ghc tries to write them to the nix store
+        "-i${inputs.xmonad-contexts}" # tell ghc to search in the respective nix store path for the module
+      ];
+
+    };
 
     # Configure libinput
     libinput = {
@@ -136,6 +152,7 @@
 
   # Enable Flakes
   nix.package = pkgs.nixFlakes;
+
   nix.extraOptions = ''
     experimental-features = nix-command flakes
     '';
