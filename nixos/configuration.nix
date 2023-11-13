@@ -103,6 +103,7 @@
     wget
     git
     rustup
+    gcc
     libsForQt5.spectacle
   ];
 

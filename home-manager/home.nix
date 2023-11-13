@@ -14,7 +14,7 @@
     EDITOR="nvim";
   };
   home.shellAliases = {
-    l = "eza";
+    l = "eza -la";
     ls = "eza";
     cat = "bat";
     home-switch = "home-manager switch --flake .#felix@nixos";
