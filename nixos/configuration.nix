@@ -15,6 +15,15 @@
   boot.loader.grub.device = "/dev/sda";
   boot.loader.grub.useOSProber = true;
 
+  nix = {
+    settings.auto-optimise-store = true;
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 14d";
+    };
+  };
+
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -44,19 +53,28 @@
   };
 
   # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
-  # Enable the KDE Plasma Desktop Environment.
-  services.xserver.displayManager.sddm.enable = true;
-  services.xserver.desktopManager.plasma5.enable = true;
-
-  # Configure keymap in X11
   services.xserver = {
+    enable = true;
+    
+    # Configure keymap in X11
     layout = "us";
     xkbVariant = "";
+    xkbOptions = "eurosign:e caps:escape";
+
+    # Enable the KDE Plasma Desktop Environment.
+    displayManager.sddm.enable = true;
+    displayManager.defaultSession = "plasma";
+    desktopManager.plasma5.enable = true;
+    windowManager.xmonad.enable = true; 
+
+    # Configure libinput
+    libinput = {
+      enable = true;
+      touchpad.naturalScrolling = true;
+    };
   };
 
-  # Enable CUPS to print documents.
+   # Enable CUPS to print documents.
   services.printing.enable = true;
 
   # Enable sound with pipewire.
@@ -83,7 +101,7 @@
   users.users.felix = {
     isNormalUser = true;
     description = "felix";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "video" "lp" "scanner" ];
     packages = with pkgs; [
       firefox
       kate
