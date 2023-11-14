@@ -92,7 +92,7 @@
       };
     };
 
-   # Enable CUPS to print documents.
+    # Enable CUPS to print documents.
     printing.enable = true;
   };
 
@@ -143,6 +143,7 @@
     gcc
     libsForQt5.spectacle
     picom
+    slock
   ];
 
   # Install fonts
@@ -164,6 +165,8 @@
   
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
+
+  programs.slock.enable = true;
   
   systemd.services.upower.enable = true;
 
