@@ -120,7 +120,7 @@
   users.users.felix = {
     isNormalUser = true;
     description = "felix";
-    extraGroups = [ "networkmanager" "wheel" "video" "lp" "scanner" ];
+    extraGroups = [ "networkmanager" "wheel" "video" "lp" "scanner" "docker" ];
     packages = with pkgs; [
       firefox
       kate
@@ -144,6 +144,8 @@
     libsForQt5.spectacle
     picom
     slock
+    docker
+    docker-compose
   ];
 
   # Install fonts
@@ -162,13 +164,25 @@
     shadow = false;
     vSync = true;
   };
+
+  # Enable Docker
+  virtualisation.docker = {
+    enable = true;
+    enableOnBoot = true;
+    autoPrune = {
+      enable = true;
+      dates = "monthly";
+      flags = [ "--all" ];
+    };
+  };
   
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
+  systemd.services.upower.enable = true;
 
+  # Enable lock screen
   programs.slock.enable = true;
   
-  systemd.services.upower.enable = true;
 
   # Enable Flakes
   nix.package = pkgs.nixFlakes;
