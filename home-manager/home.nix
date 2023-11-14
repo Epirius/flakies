@@ -55,6 +55,7 @@
     helix
     rofi
     nitrogen
+    z-lua
     # dunst # TODO ACTIVATE THIS
   ];
 
@@ -145,6 +146,11 @@
       enable = true;
       plugins = ["git" "python" "docker" "fzf"];
       theme = "dpoggi";
+    };
+
+    z-lua = {
+      enable = true;
+      enableZshIntegration = true;
     };
 
     git = {
