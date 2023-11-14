@@ -41,6 +41,7 @@
     chromium
     dunst
     eza
+    fd
     fzf
     gh
     google-chrome
@@ -56,6 +57,7 @@
     vscode
     z-lua
     zellij
+    zsh-powerlevel10k
   ];
 
   programs = {
@@ -139,12 +141,21 @@
       enable = true;
       enableAutosuggestions = true;
       initExtra = "bindkey '^H' backward-kill-word";
-    };
+      syntaxHighlighting.enable = true;
 
-    zsh.oh-my-zsh= {
-      enable = true;
-      plugins = ["git" "python" "docker" "fzf"];
-      theme = "dpoggi";
+      
+      zplug = {
+        enable = true;
+        plugins = [
+          {name = "MichaelAquilina/zsh-you-should-use"; }
+        ];
+      };
+
+      oh-my-zsh= {
+        enable = true;
+        plugins = ["git" "python" "docker" "fzf" "web-search" ];
+        theme = "dpoggi";
+      };
     };
 
     z-lua = {

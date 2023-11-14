@@ -120,6 +120,7 @@
   users.users.felix = {
     isNormalUser = true;
     description = "felix";
+    hashedPassword = "$y$j9T$.MRwT6Xn6Ero8.XavKxX..$fDymN.WLA8PGkJuFdjRm87D2kjooIwFoQe/JqUEyBmC";
     extraGroups = [ "networkmanager" "wheel" "video" "lp" "scanner" "docker" ];
     packages = with pkgs; [
       firefox
@@ -129,6 +130,7 @@
     shell = pkgs.zsh;
   };
   programs.zsh.enable = true;
+  programs.zsh.promptInit = "source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -145,6 +147,7 @@
     ghc
     git
     gnupg
+    httpie
     htop
     jetbrains.jdk
     libsForQt5.spectacle
@@ -163,10 +166,15 @@
   fonts.packages = with pkgs; [
     fira-code
     fira-code-symbols
+    font-awesome
+    font-awesome_5
     liberation_ttf
+    #nerdfonts
     noto-fonts
     noto-fonts-cjk
     noto-fonts-emoji
+    powerline
+    source-code-pro
   ];
 
   # Enable picom compositor
