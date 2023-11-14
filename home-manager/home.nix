@@ -30,6 +30,9 @@
     ".config/../.local/share/konsole/Profile\ 1.profile" = {
       source = ./konsole/Profile1.profile;
     };
+    ".config/../.p10k.zsh" = {
+      source = ./konsole/.p10k.zsh;
+    };
   };
   
 

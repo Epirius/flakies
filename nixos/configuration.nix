@@ -169,7 +169,7 @@
     font-awesome
     font-awesome_5
     liberation_ttf
-    #nerdfonts
+    nerdfonts
     noto-fonts
     noto-fonts-cjk
     noto-fonts-emoji
