@@ -23,7 +23,11 @@
     reload = "source ~/.zshrc";
     cg = "cargo";
   };
-  home.file = {};
+  home.file = {
+    "~/.local/share/konsole/Profile1.profile" = {
+      source = ./konsole/Profile1.profile;
+    };
+  };
   
 
 
@@ -49,11 +53,7 @@
     rofi
     nitrogen
   ];
-home.activation = {
-    onSessionStart = ''
-    ./set_wallpaper.sh
-    '';
-  };
+
   programs = {
     neovim = {
       enable = true;
