@@ -24,7 +24,10 @@
     cg = "cargo";
   };
   home.file = {
-    "~/.local/share/konsole/Profile1.profile" = {
+    ".config/../.local/share/konsole/Breeze.colorscheme" = {
+      source = ./konsole/Breeze.colorscheme;
+    };
+    ".config/../.local/share/konsole/Profile1.profile" = {
       source = ./konsole/Profile1.profile;
     };
   };
@@ -52,6 +55,7 @@
     helix
     rofi
     nitrogen
+    # dunst # TODO ACTIVATE THIS
   ];
 
   programs = {

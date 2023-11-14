@@ -139,8 +139,10 @@
     rustup
     gcc
     libsForQt5.spectacle
+    picom
   ];
 
+  # Install fonts
   fonts.packages = with pkgs; [
     noto-fonts
     noto-fonts-cjk
@@ -149,6 +151,11 @@
     fira-code
     fira-code-symbols
   ];
+
+  # Enable picom compositor
+  services.picom = {
+    enable = true;
+  };
 
   # Enable Flakes
   nix.package = pkgs.nixFlakes;
