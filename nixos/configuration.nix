@@ -51,47 +51,50 @@
     LC_TELEPHONE = "nb_NO.UTF-8";
     LC_TIME = "nb_NO.UTF-8";
   };
+  
+  services = {
 
-  # Enable the X11 windowing system.
-  services.xserver = {
-    enable = true;
-    
-    # Configure keymap in X11
-    layout = "us";
-    xkbVariant = "";
-    xkbOptions = "eurosign:e caps:escape";
-
-    # Enable the KDE Plasma Desktop Environment.
-    displayManager.sddm.enable = true;
-    displayManager.defaultSession = "plasma";
-    desktopManager.plasma5.enable = true;
-    windowManager.xmonad = {
+    # Enable the X11 windowing system.
+    xserver = {
       enable = true;
-      enableContribAndExtras = true;
-      enableConfiguredRecompile = true;
+      
+      # Configure keymap in X11
+      layout = "us";
+      xkbVariant = "";
+      xkbOptions = "eurosign:e caps:escape";
+  
+      # Enable the KDE Plasma Desktop Environment.
+      displayManager.sddm.enable = true;
+      displayManager.defaultSession = "none+xmonad";
+      desktopManager.plasma5.enable = true;
+      windowManager.xmonad = {
+        enable = true;
+        enableContribAndExtras = true;
+        enableConfiguredRecompile = true;
+  
+        config = ./../home-manager/xmonad/xmonad.hs;
+        extraPackages =  haskellPackages: [
+	        haskellPackages.xmobar
+        ];
 
-      config = ./../home-manager/xmonad/xmonad.hs;
-      extraPackages =  haskellPackages: [
-	      haskellPackages.xmobar
-      ];
-
-      ghcArgs = [
-        "-hidir /tmp" # place interface files in /tmp, otherwise ghc tries to write them to the nix store
-        "-odir /tmp" # place object files in /tmp, otherwise ghc tries to write them to the nix store
-        "-i${inputs.xmonad-contexts}" # tell ghc to search in the respective nix store path for the module
-      ];
-
+        ghcArgs = [
+          "-hidir /tmp" # place interface files in /tmp, otherwise ghc tries to write them to the nix store
+          "-odir /tmp" # place object files in /tmp, otherwise ghc tries to write them to the nix store
+          "-i${inputs.xmonad-contexts}" # tell ghc to search in the respective nix store path for the module
+        ];
+  
+      };
+  
+      # Configure libinput
+      libinput = {
+        enable = true;
+        touchpad.naturalScrolling = true;
+      };
     };
-
-    # Configure libinput
-    libinput = {
-      enable = true;
-      touchpad.naturalScrolling = true;
-    };
-  };
 
    # Enable CUPS to print documents.
-  services.printing.enable = true;
+    printing.enable = true;
+  };
 
   # Enable sound with pipewire.
   sound.enable = true;
@@ -154,8 +157,15 @@
 
   # Enable picom compositor
   services.picom = {
-    enable = true;
+    enable = false;
+    shadow = false;
+    vSync = true;
   };
+  
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
+  
+  systemd.services.upower.enable = true;
 
   # Enable Flakes
   nix.package = pkgs.nixFlakes;

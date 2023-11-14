@@ -27,7 +27,7 @@
     ".config/../.local/share/konsole/Breeze.colorscheme" = {
       source = ./konsole/Breeze.colorscheme;
     };
-    ".config/../.local/share/konsole/Profile1.profile" = {
+    ".config/../.local/share/konsole/Profile\ 1.profile" = {
       source = ./konsole/Profile1.profile;
     };
   };
@@ -69,62 +69,62 @@
       enable = true;
       profiles.default = {
         extensions = with inputs.firefox-addons.packages."x86_64-linux"; [
-	  ublock-origin 
-	  proton-pass
-	  sponsorblock
-	  videospeed
-	  reddit-enhancement-suite
-	  reddit-comment-collapser
-	  pushbullet
-	  #grammarly
-	  facebook-container
-	  #enhancer-for-youtube
-	];
+        ublock-origin 
+        proton-pass
+        sponsorblock
+        videospeed
+        reddit-enhancement-suite
+        reddit-comment-collapser
+        pushbullet
+        #grammarly
+        facebook-container
+        #enhancer-for-youtube
+      ];
 
-	bookmarks = [
-	  {
-            name = "YouTube";
-	    tags = [ "videos" ];
-	    keyword = "videos";
-	    url = "https://www.youtube.com/";
-	  }
-	];
+      bookmarks = [
+        {
+                name = "YouTube";
+          tags = [ "videos" ];
+          keyword = "videos";
+          url = "https://www.youtube.com/";
+        }
+      ];
 
-	settings = {
-	  "browser.download.panel.shown" = true;
-	  "identity.fxaccounts.enable" = false;
-	  "signon.rememberSignons" = false;
-	};
+      settings = {
+        "browser.download.panel.shown" = true;
+        "identity.fxaccounts.enable" = false;
+        "signon.rememberSignons" = false;
+      };
 
-	search.engines = {
-	  "Nix Packages" = {
-	    urls = [{
+      search.engines = {
+        "Nix Packages" = {
+          urls = [{
 
-	      template = "https://search.nixos.org/packages";
-	      params = [
-	        { name = "type"; value = "packages"; }
-	        { name = "query"; value = "{searchTerms}"; }
-	      ];
-	    }];
-	    definedAliases = ["np"];
-	  };
+            template = "https://search.nixos.org/packages";
+            params = [
+              { name = "type"; value = "packages"; }
+              { name = "query"; value = "{searchTerms}"; }
+            ];
+          }];
+          definedAliases = ["np"];
+        };
 
-	  "Twitch" = {
-	    urls = [{
-	      template = "https://www.twitch.tv/{searchTerms}";
-	    }];
-	    definedAliases = ["t"];
-          };
+        "Twitch" = {
+          urls = [{
+            template = "https://www.twitch.tv/{searchTerms}";
+          }];
+          definedAliases = ["t"];
+              };
 
-	  "Reddit" = {
-	    urls = [{
-	      template = "https://www.reddit.com/r/{searchTerms}";
-	    }];
-	    definedAliases = ["r"];
-	  };
-	};
+        "Reddit" = {
+          urls = [{
+            template = "https://www.reddit.com/r/{searchTerms}";
+          }];
+          definedAliases = ["r"];
+        };
+      };
 
-	search.force = true;
+      search.force = true;
       };
     };
     
