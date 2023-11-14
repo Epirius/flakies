@@ -273,7 +273,7 @@ myLogHook = return ()
 -- By default, do nothing.
 myStartupHook = do
 	spawnOnce "/home/felix/.xmonad/startup.sh"
-	spawnOnce "nitrogen --set-centered ./../backgrounds/journey.jpg"
+	spawnOnce "nitrogen --restore &" -- --set-centered ./../backgrounds/journey.jpg"
 	spawnOnce "picom -b &"
 	spawnOnce "/usr/bin/dunst"
 

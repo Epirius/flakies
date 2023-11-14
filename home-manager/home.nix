@@ -24,8 +24,10 @@
     cg = "cargo";
   };
   home.file = {};
+  
 
-  # Let Home Manager install and manage itself.
+
+    # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
   home.packages = with pkgs; [
     bat
@@ -44,8 +46,14 @@
     spotify
     zellij
     helix
+    rofi
+    nitrogen
   ];
-
+home.activation = {
+    onSessionStart = ''
+    ./set_wallpaper.sh
+    '';
+  };
   programs = {
     neovim = {
       enable = true;
@@ -141,7 +149,7 @@
       userEmail = "mrKaasa@protonmail.com";
       aliases = {
         p = "push";
-	cm = "commit";
+	      cm = "commit";
       };
     };
 
@@ -151,12 +159,18 @@
       extensions = with pkgs.vscode-extensions; [
         # see: https://search.nixos.org/packages?channel=23.05&from=0&size=50&sort=relevance&type=packages&query=vscode-extensions
         esbenp.prettier-vscode
-	dbaeumer.vscode-eslint
-	bradlc.vscode-tailwindcss
-	rust-lang.rust-analyzer
-	asvetliakov.vscode-neovim
-	tomoki1207.pdf
+        dbaeumer.vscode-eslint
+        bradlc.vscode-tailwindcss
+        rust-lang.rust-analyzer
+        asvetliakov.vscode-neovim
+        tomoki1207.pdf
+        bbenoist.nix
       ];
+    };
+    
+    rofi = {
+      enable = true;
+      theme = "${pkgs.rofi}/share/rofi/themes/Monokai.rasi";
     };
 
   };
