@@ -38,25 +38,24 @@
   programs.home-manager.enable = true;
   home.packages = with pkgs; [
     bat
-    fzf
-    ripgrep
-    jq
-    tree
-    neofetch
-    eza
-    google-chrome
     chromium
-    gh
-    vscode
-    jetbrains.idea-ultimate
-    obsidian
-    spotify
-    zellij
-    helix
-    rofi
-    nitrogen
-    z-lua
     dunst
+    eza
+    fzf
+    gh
+    google-chrome
+    helix
+    jetbrains.idea-ultimate
+    jq
+    nitrogen
+    obsidian
+    ripgrep
+    rofi
+    spotify
+    tree
+    vscode
+    z-lua
+    zellij
   ];
 
   programs = {
@@ -70,16 +69,16 @@
       enable = true;
       profiles.default = {
         extensions = with inputs.firefox-addons.packages."x86_64-linux"; [
-        ublock-origin 
-        proton-pass
-        sponsorblock
-        videospeed
-        reddit-enhancement-suite
-        reddit-comment-collapser
-        pushbullet
+        #enhancer-for-youtube
         #grammarly
         facebook-container
-        #enhancer-for-youtube
+        proton-pass
+        pushbullet
+        reddit-comment-collapser
+        reddit-enhancement-suite
+        sponsorblock
+        ublock-origin
+        videospeed
       ];
 
       bookmarks = [
@@ -188,7 +187,7 @@
   services = {
     dunst = {
       enable = true;
-      
+
     };
   };
 

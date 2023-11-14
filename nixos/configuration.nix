@@ -136,26 +136,37 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    wget
-    git
-    rustup
-    gcc
-    libsForQt5.spectacle
-    picom
-    slock
+    cabal-install
+    cmake
+    coreutils
     docker
     docker-compose
+    gcc
+    ghc
+    git
+    gnupg
+    htop
+    jetbrains.jdk
+    libsForQt5.spectacle
+    neofetch
+    neovim 
+    picom
+    python3
+    rustup
+    slock
+    stack
+    wget
+    zip
   ];
 
   # Install fonts
   fonts.packages = with pkgs; [
+    fira-code
+    fira-code-symbols
+    liberation_ttf
     noto-fonts
     noto-fonts-cjk
     noto-fonts-emoji
-    liberation_ttf
-    fira-code
-    fira-code-symbols
   ];
 
   # Enable picom compositor
