@@ -56,7 +56,7 @@
     rofi
     nitrogen
     z-lua
-    # dunst # TODO ACTIVATE THIS
+    dunst
   ];
 
   programs = {
@@ -183,6 +183,13 @@
       theme = "${pkgs.rofi}/share/rofi/themes/Monokai.rasi";
     };
 
+  };
+
+  services = {
+    dunst = {
+      enable = true;
+      
+    };
   };
 
 
