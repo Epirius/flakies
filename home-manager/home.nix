@@ -33,6 +33,9 @@
     ".config/../.p10k.zsh" = {
       source = ./konsole/.p10k.zsh;
     };
+    ".config/../.xmonad/startup.sh" = {
+      source = ./xmonad/startup.sh;
+    };
   };
   
 
@@ -49,6 +52,7 @@
     gh
     google-chrome
     helix
+    httpie
     jetbrains.idea-ultimate
     jq
     nitrogen
@@ -56,6 +60,7 @@
     ripgrep
     rofi
     spotify
+    tealdeer
     tree
     vscode
     z-lua
