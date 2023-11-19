@@ -67,7 +67,7 @@
       displayManager = {
         sddm = {
           enable = true;
-          theme = "${import ./derivations/sddm/sddm-theme.nix {inherit pkgs; }}";
+          #theme = "${import ./derivations/sddm/sddm-theme.nix {inherit pkgs; }}";
         };
         setupCommands = "nitrogen --set-auto ./../home-manager/backgrounds/journey.jpg";
         sessionCommands = "killall picom";
@@ -160,6 +160,8 @@
     killall
     libfido2
     libsForQt5.spectacle
+    libsForQt5.qt5.qtquickcontrols2   
+    libsForQt5.qt5.qtgraphicaleffects
     neofetch
     neovim 
     picom

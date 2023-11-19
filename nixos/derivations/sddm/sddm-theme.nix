@@ -4,25 +4,22 @@ let
     imgLink = "https://github.com/Epirius/flakies/blob/main/home-manager/backgrounds/journey.jpg";
     image = pkgs.fetchurl {
         url = imgLink;
-        sha256 = "";
+        sha256 = "dnx02K6KCnPusPkQHEmXYDWVpoKxpchzhrDngA/rk/M=";
     };
 in
 pkgs.stdenv.mkDerivation {
-    name = "sddm-theme-delicious";
-    src = pkgs.fetchFromGitHub {
-        owner = "stuomas";
-        repo = "delicious-sddm-theme";
-        rev = "fc98a56db6a61521cb2c55f2c50416f01f565ef7";
-        sha256 = "085n7663p0bz6jl516z7gvkc09m2rr33cygpl3n3fnyg3ins7msw";
-    };
-    installPhase = ''
-        mkdir -p $out
-        cp -R ./* $out/
-        cd $out/background/
-        cp -r ${image} $out/background/bg.jpg
-        cd $out/
-        rm theme.conf
-        cp $src/theme.conf $out/theme.conf
-        
-    '';
+  name = "sddm-theme";
+  src = pkgs.fetchFromGitHub {
+    owner = "MarianArlt";
+    repo = "sddm-sugar-dark";
+    rev = "ceb2c455663429be03ba62d9f898c571650ef7fe";
+    sha256 = "0153z1kylbhc9d12nxy9vpn0spxgrhgy36wy37pk6ysq7akaqlvy";
+  };
+  installPhase = ''
+    mkdir -p $out
+    cp -R ./* $out/
+    cd $out/
+    rm Background.jpg
+    cp -r ${image} $out/Background.jpg
+   '';
 }
