@@ -150,6 +150,7 @@
     httpie
     htop
     jetbrains.jdk
+    libfido2
     libsForQt5.spectacle
     neofetch
     neovim 
@@ -198,6 +199,12 @@
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
   systemd.services.upower.enable = true;
+
+  # xps 13 pluss webcam
+  hardware.ipu6 = {
+    enable = true;
+    platform = "ipu6ep";
+  };
 
   # Enable lock screen
   programs.slock.enable = true;
