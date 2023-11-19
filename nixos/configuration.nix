@@ -65,6 +65,9 @@
   
       # Enable the KDE Plasma Desktop Environment.
       displayManager.sddm.enable = true;
+      displayManager.setupCommands = {
+        "nitrogen --set-auto ./../home-manager/backgrounds/journey.jpg"
+      };
       displayManager.defaultSession = "none+xmonad";
       desktopManager.plasma5.enable = true;
       windowManager.xmonad = {
