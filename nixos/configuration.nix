@@ -64,11 +64,12 @@
       xkbOptions = "eurosign:e caps:escape";
   
       # Enable the KDE Plasma Desktop Environment.
-      displayManager.sddm.enable = true;
-      displayManager.setupCommands = {
-        "nitrogen --set-auto ./../home-manager/backgrounds/journey.jpg"
+      displayManager = {
+        sddm.enable = true;
+        setupCommands = "nitrogen --set-auto ./../home-manager/backgrounds/journey.jpg";
+        sessionCommands = "killall picom";
+        defaultSession = "none+xmonad";
       };
-      displayManager.defaultSession = "none+xmonad";
       desktopManager.plasma5.enable = true;
       windowManager.xmonad = {
         enable = true;
@@ -153,6 +154,7 @@
     httpie
     htop
     jetbrains.jdk
+    killall
     libfido2
     libsForQt5.spectacle
     neofetch
