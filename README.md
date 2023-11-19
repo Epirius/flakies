@@ -13,14 +13,17 @@ nix shell nixpkgs\#neofetch
 
 # installation instructions
 ## install via script
-NB: SCRIPT DOES NOT CURRENTLY WORK CORRECTLY
 start from a clean install of nixos.
-download and run full-install.sh (without cloning the repo)
+```
+download the script from https://github.com/Epirius/flakies/blob/main/full-install.sh
+
+chmod +x full-install.sh
+./full-install.sh
+```
 
 ## manual install
 1. Starting with a fresh nixos install, we need to install git and neovim:
 ```
-# TODO: this can be changed to a temp shell
 cd /etc/nixos
 sudo nano configuration.nix
 # add git and neovim
@@ -30,10 +33,6 @@ sudo nixos-rebuild switch
 ```
 cd ~
 git clone https://github.com/Epirius/flakies.git
-```
-NB: SCRIPT DOES NOT CURRENTLY WORK CORRECTLY
-You can run ./install.sh at this point, or continue manually
-```
 cd flakies/nixos/
 rm hardware-configuration.nix
 sudo cp /etc/nixos/hardware-configuration.nix .
