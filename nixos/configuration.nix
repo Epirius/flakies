@@ -65,7 +65,10 @@
   
       # Enable the KDE Plasma Desktop Environment.
       displayManager = {
-        sddm.enable = true;
+        sddm = {
+          enable = true;
+          theme = "${import ./derivations/sddm/sddm-theme.nix {inherit pkgs; }}";
+        };
         setupCommands = "nitrogen --set-auto ./../home-manager/backgrounds/journey.jpg";
         sessionCommands = "killall picom";
         defaultSession = "none+xmonad";
