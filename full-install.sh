@@ -30,8 +30,9 @@ home-manager switch --flake .#$username@nixos
 
 
 rustup default stable
-nix-collect-garbage -d
+tldr --update
 
+nix-collect-garbage -d
 exit 0
 
 
