@@ -151,7 +151,11 @@
     zsh = {
       enable = true;
       enableAutosuggestions = true;
-      initExtra = "bindkey '^H' backward-kill-word";
+      initExtra = "
+        bindkey '^H' backward-kill-word \n
+        [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+      ";
       syntaxHighlighting.enable = true;
 
       
@@ -159,6 +163,10 @@
         enable = true;
         plugins = [
           {name = "MichaelAquilina/zsh-you-should-use"; }
+          {
+            name = "romkatv/powerlevel10K";
+            tags = [ "as:theme" "depth:1" ];
+          }
         ];
       };
 
