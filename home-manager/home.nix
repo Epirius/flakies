@@ -43,6 +43,7 @@
     # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
   home.packages = with pkgs; [
+    authy
     bat
     chromium
     dunst
@@ -54,6 +55,7 @@
     helix
     httpie
     jetbrains.idea-ultimate
+    jetbrains.rust-rover
     jq
     nitrogen
     obsidian
