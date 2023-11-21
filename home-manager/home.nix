@@ -58,12 +58,13 @@
     jetbrains.rust-rover
     jq
     nitrogen
-    obsidian
+        obsidian
     ripgrep
     rofi
     spotify
     tealdeer
     tree
+    vlc
     vscode
     z-lua
     zellij
