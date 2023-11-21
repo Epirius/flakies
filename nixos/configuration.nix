@@ -11,9 +11,15 @@
     ];
 
   # Bootloader.
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/sda";
-  boot.loader.grub.useOSProber = true;
+  # boot.loader.grub.enable = true;
+  # boot.loader.grub.device = "/dev/nvme0n1p1";
+  # boot.loader.grub.useOSProber = true;
+  
+  #boot.kernelPackages = pkgs.linuxPackages_6_5; #todo delete
+  boot.loader = {
+    systemd-boot.enable = true;
+    efi.canTouchEfiVariables = true;
+  };
 
   nix = {
     settings.auto-optimise-store = true;
@@ -151,8 +157,12 @@
     ghc
     git
     gnupg
+    #gst_all_1.gstreamer
+    #gst_all_1.icamerasrc-ipu6
     httpie
     htop
+    #ipu6ep-camera-bin
+    #ipu6ep-camera-hal
     jetbrains.jdk
     killall
     libfido2
@@ -206,11 +216,11 @@
   systemd.services.upower.enable = true;
 
   # xps 13 pluss webcam
-  hardware.ipu6 = {
+ hardware.ipu6 = {
     enable = true;
     platform = "ipu6ep";
-  };
-
+  }; 
+ 
   # Enable lock screen
   programs.slock.enable = true;
   
